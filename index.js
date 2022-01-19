@@ -19,9 +19,9 @@ app.get('/talker', getTalkers);
 
 app.get('/talker/:id', getTalkersById);
 
-app.use(token);
+app.post('/login', token);
 
-app.post('/login');
+app.post('/talker');
 
 app.listen(PORT, () => {
   console.log('Online');
