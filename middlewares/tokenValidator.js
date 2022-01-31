@@ -1,6 +1,5 @@
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  console.log({ authorization });
   // caso o password não exista ou seja uma string vazia
     const MINCARACTER = 16;
     if (!authorization || authorization === '') {
