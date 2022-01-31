@@ -28,8 +28,12 @@ app.get('/talker/:id', getTalkersById);
 
 app.post('/login', token);
 
-app.post('/talker', tokenValidator, 
-nameValidator, ageValidator, talkValidator, watchedAtValidator, rateValidator, createTalker);
+app.use(tokenValidator, nameValidator, ageValidator, 
+  talkValidator, watchedAtValidator, rateValidator);
+
+app.post('/talker', createTalker);
+
+// app.put('/talker', updateTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
