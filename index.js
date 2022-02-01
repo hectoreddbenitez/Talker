@@ -10,6 +10,7 @@ const ageValidator = require('./middlewares/ageValidator');
 const watchedAtValidator = require('./middlewares/watchedAtValidator');
 const talkValidator = require('./middlewares/talkValidator');
 const rateValidator = require('./middlewares/rateValidator');
+const updateTalker = require('./middlewares/updateTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -33,7 +34,7 @@ app.use(tokenValidator, nameValidator, ageValidator,
 
 app.post('/talker', createTalker);
 
-// app.put('/talker', updateTalker);
+app.put('/talker/:id', updateTalker);
 
 app.listen(PORT, () => {
   console.log('Online');
