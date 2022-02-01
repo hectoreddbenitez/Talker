@@ -15,7 +15,6 @@ module.exports = async (req, res) => {
     talk,
   };
   talkersFiltered.push(editTalker);
-  console.log(talkersFiltered);
   const newTalkers = JSON.stringify(talkersFiltered);
   await fs.writeFile('./talker.json', newTalkers);
   res.status(200).json(editTalker);

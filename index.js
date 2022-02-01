@@ -12,6 +12,7 @@ const talkValidator = require('./middlewares/talkValidator');
 const rateValidator = require('./middlewares/rateValidator');
 const updateTalker = require('./middlewares/updateTalker');
 const deleteTalker = require('./middlewares/deleteTalker');
+const searchTalker = require('./middlewares/searchTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,11 +25,13 @@ app.get('/', (_request, response) => {
   response.status(HTTP_OK_STATUS).send();
 });
 
+app.get('/talker/search', tokenValidator, searchTalker);
+
+app.post('/login', token);
+
 app.get('/talker', getTalkers);
 
 app.get('/talker/:id', getTalkersById);
-
-app.post('/login', token);
 
 app.use(tokenValidator);
 
