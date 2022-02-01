@@ -11,6 +11,7 @@ const watchedAtValidator = require('./middlewares/watchedAtValidator');
 const talkValidator = require('./middlewares/talkValidator');
 const rateValidator = require('./middlewares/rateValidator');
 const updateTalker = require('./middlewares/updateTalker');
+const deleteTalker = require('./middlewares/deleteTalker');
 
 const app = express();
 app.use(bodyParser.json());
@@ -29,7 +30,11 @@ app.get('/talker/:id', getTalkersById);
 
 app.post('/login', token);
 
-app.use(tokenValidator, nameValidator, ageValidator, 
+app.use(tokenValidator);
+
+app.delete('/talker/:id', deleteTalker);
+
+app.use(nameValidator, ageValidator, 
   talkValidator, watchedAtValidator, rateValidator);
 
 app.post('/talker', createTalker);
